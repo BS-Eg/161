@@ -22,9 +22,9 @@ curl -s https://raw.githubusercontent.com/BS-Eg/162/main/run.sh | sudo bash -s 1
 to set up another Odoo instance @ `localhost:10161` (default master password: `Bs@147258`)
 
 Some arguments:
-* First argument (**odoo16-one**): Odoo deploy folder
-* Second argument (**10016**): Odoo port
-* Third argument (**20016**): live chat port
+* First argument (**odoo14-one**): Odoo deploy folder
+* Second argument (**10161**): Odoo port
+* Third argument (**20161**): live chat port
 
 If `curl` is not found, install it:
 
