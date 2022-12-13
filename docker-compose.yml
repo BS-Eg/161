@@ -37,7 +37,7 @@ services:
       - ./pgsql:/var/lib/postgresql/data
     ports:
       - 5432:5432
-  restart: always # run as a service
+    restart: always # run as a service
 networks:
   bridge:
     driver: bridge
