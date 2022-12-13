@@ -1,0 +1,43 @@
+version: '3.4'
+services:
+  od161:
+    container_name: od161
+    image: odoo:16
+    user: root
+    depends_on:
+      - db161
+    ports:
+      - "10161:8069"
+      - "20161:8072" # live chat
+    tty: true
+    command: --
+    environment:
+      - HOST=db161
+      - USER=odoo
+      - PASSWORD=Bs@147258
+    volumes:
+      #- /etc/timezone:/etc/timezone:trt
+      #- /etc/localtime:/etc/localtime:trt
+      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      - ./addons:/mnt/extra-addons
+      - ./conf:/etc/odoo
+      - ./log:/var/log/odoo
+      - ./data:/var/lib/odoo
+    restart: always # run as a service
+  db161:
+    container_name: db161
+    image: postgres:latest
+    user: root
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=Bs@147258
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./pgsql:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  restart: always # run as a service
+networks:
+  bridge:
+    driver: bridge
