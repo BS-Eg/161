@@ -7,8 +7,8 @@ services:
     depends_on:
       - db161
     ports:
-      - "10161:8069"
-      - "20161:8072" # live chat
+      - "10161:10161"
+      - "20161:20161" # live chat
     tty: true
     command: --
     environment:
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./pgsql:/var/lib/postgresql/data
     ports:
-      - 16132:5432
+      - 16132:16132
     restart: always # run as a service
 networks:
   bridge:
