@@ -27,6 +27,10 @@ services:
   db161:
     container_name: db161
     image: postgres:latest
+    #THIS MUST BE ADDED AT SERVICE LEVEL
+    shm_size: 1gb 
+    # shm_size: 1g   
+    
     user: root
     environment:
       - POSTGRES_USER=odoo
